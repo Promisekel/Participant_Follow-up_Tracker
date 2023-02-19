@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "838646186980",
+    "project_id": "paftracker-app",
+    "storage_bucket": "paftracker-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838646186980:android:1f6ea08f2f976bb77b3df1",
+        "android_client_info": {
+          "package_name": "com.example.pfa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838646186980-ndc68milq9cfamf1cnbtk91r93am89kc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0FbWlXNNTguLzcICxx9hnDEbSQgQAXw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838646186980-ndc68milq9cfamf1cnbtk91r93am89kc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

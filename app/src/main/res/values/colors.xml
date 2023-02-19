@@ -8,6 +8,11 @@
     <color name="color_primary">#F0212642</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="grey">#716E6E</color>
+    <color name="grey">#FA9A9A9A</color>
+    <color name="grey2">#FAE8E8E8</color>
+    <color name="green">#50A307</color>
+    <color name="red">#AA0820</color>
+
+
     <color name="col1">#241B35</color>
 </resources>
