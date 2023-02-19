@@ -24,8 +24,6 @@ public class Fragment_Progress extends Fragment {
         // Required empty public constructor
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,9 +31,7 @@ public class Fragment_Progress extends Fragment {
         View view= inflater.inflate(R.layout.fragment_1, container, false);
 
         return  view;
-
     }
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,7 +45,6 @@ public class Fragment_Progress extends Fragment {
 
         MenuItem item = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -57,7 +52,6 @@ public class Fragment_Progress extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.logout) {
-
         }
         return super.onOptionsItemSelected(item);
     }

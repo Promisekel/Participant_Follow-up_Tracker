@@ -10,7 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.pfa.R;
+import com.example.PaFTracker.R;
 
 public class LoginActivity extends AppCompatActivity {
     private ActionBar actionBar;

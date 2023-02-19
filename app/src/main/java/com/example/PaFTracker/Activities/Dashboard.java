@@ -6,9 +6,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.example.PaFTracker.R;
 import com.example.PaFTracker.fragments.Fragment_Progress;
 import com.example.PaFTracker.fragments.Fragment_Graph;
-import com.example.pfa.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class Dashboard extends AppCompatActivity {
