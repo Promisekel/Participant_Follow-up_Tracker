@@ -32,8 +32,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
+import com.example.PaFTracker.R;
 
 public class LoginActivity extends AppCompatActivity {
+    private ActionBar actionBar;
     private ProgressBar progressbar;
     private TextView loginBtn,progressTv;
     private RelativeLayout parentRelative;
