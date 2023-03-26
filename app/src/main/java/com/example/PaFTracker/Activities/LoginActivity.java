@@ -142,7 +142,7 @@ public class LoginActivity extends AppCompatActivity {
                     loginBtn.setVisibility(View.INVISIBLE);
                     parentRelative.setEnabled(false);
                     parentRelative.setBackgroundColor(getColor(R.color.red));
-                    progressTv.setText(" "+e.getMessage());
+                    Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                     ///signInEt.setText("SORRY! CLICK TO TRY AGAIN");
                    /// signInEt.setBackgroundColor(getColor(R.color.red));
                     Toast.makeText(LoginActivity.this, "" + e.getMessage(), Toast.LENGTH_LONG).show();

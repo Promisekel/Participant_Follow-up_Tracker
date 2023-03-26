@@ -109,29 +109,11 @@ public class SignUpActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
-                        FirebaseUser user = auth.getCurrentUser();
-                        final String email1 = user.getEmail();
-                        final String projectId = user.getUid();
-                        HashMap<Object, String> hashMap = new HashMap<>();
-                        hashMap.put("projectEmail", email1);
-                        hashMap.put("projectId", projectId);
-                        hashMap.put("Project Name", projectName);
-
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        DatabaseReference reference = database.getReference("Project");
-                        reference.child(projectId).setValue(hashMap);
-                        auth.getCurrentUser().sendEmailVerification()
-                                .addOnCompleteListener(task1 -> {
-                                    if (task1.isSuccessful()){
-                                        progressbar.setVisibility(View.GONE);
-                                        registerBtn.setVisibility(View.INVISIBLE);
-                                        parentRelative.setEnabled(false);
-                                        parentRelative.setBackgroundColor(getColor(R.color.green));
-                                        progressTv.setText("login Successful...");
-                                    }
-
-                                }).addOnFailureListener(e -> Toast.makeText(SignUpActivity.this, ""+e.getMessage(), Toast.LENGTH_LONG).show());
-
+                        progressbar.setVisibility(View.GONE);
+                        registerBtn.setVisibility(View.INVISIBLE);
+                        parentRelative.setEnabled(false);
+                        parentRelative.setBackgroundColor(getColor(R.color.green));
+                        progressTv.setText("login Successful...");
 
                     } else {
                         // If sign in fails, display a message to the user.

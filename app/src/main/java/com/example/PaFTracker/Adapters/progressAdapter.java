@@ -37,13 +37,14 @@ public class progressAdapter extends RecyclerView.Adapter<progressAdapter.Holder
     @Override
     public void onBindViewHolder(@NonNull HolderProgress holder, int position) {
         progressModel model= pmodel.get(position);
-        String pid = model.getPid();
-        String sheetId = model.getSheetId();
-        String projectName = model.getProjectName();
-        String uid = model.getUid();
+        String pid = model.getPID();
+        String passport = model.getPASSPORT();
 
         holder.pid.setText(pid);
+
+
     }
+
 
     @Override
     public int getItemCount() {

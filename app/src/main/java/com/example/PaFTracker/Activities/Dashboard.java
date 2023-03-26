@@ -40,7 +40,6 @@ public class Dashboard extends AppCompatActivity {
         adapter.addFragemt(new Fragment_Progress(), "Progress Profile");
         adapter.addFragemt(new Fragment_Graph(), "Graph Profile");
 
-
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
     }

@@ -61,28 +61,18 @@ public class SheetIDRegistration extends AppCompatActivity {
             } else {
 
                 ref=database.getReference("SheetIDs");
-                ref.child(user.getUid()).child("SheetID").setValue(sheetID).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            SharedPreferences preferences = getSharedPreferences("sheetID.pref", Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("sheetID", sheetID);
-                            editor.apply();
-                            linkBtn.setVisibility(View.GONE);
-                            verifiedIV.setVisibility(View.VISIBLE);
-                            startActivity(new Intent(SheetIDRegistration.this,Dashboard.class));
-                        }
+                ref.child(user.getUid()).child("SheetID").setValue(sheetID).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        SharedPreferences preferences = getSharedPreferences("sheetID.pref", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("sheetID", sheetID);
+                        editor.apply();
+                        linkBtn.setVisibility(View.GONE);
+                        verifiedIV.setVisibility(View.VISIBLE);
+                        startActivity(new Intent(SheetIDRegistration.this,Dashboard.class));
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(SheetIDRegistration.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                }).addOnFailureListener(e -> Toast.makeText(SheetIDRegistration.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show());
             }
-
         });
-
     }
 }
