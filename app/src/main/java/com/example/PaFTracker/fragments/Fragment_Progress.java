@@ -59,7 +59,6 @@ public class Fragment_Progress extends Fragment {
         SharedPreferences shf = Objects.requireNonNull(getActivity()).getSharedPreferences("sheetID.pref", Context.MODE_PRIVATE);
         final String sheetID = shf.getString("sheetID", null);
         loadData(sheetID);
-        Toast.makeText(getActivity(), ""+sheetID, Toast.LENGTH_LONG).show();
 
         return  view;
     }

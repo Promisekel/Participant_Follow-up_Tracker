@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class SheetIDRegistration extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
@@ -33,6 +35,7 @@ public class SheetIDRegistration extends AppCompatActivity {
     DatabaseReference ref;
     FirebaseUser user;
     ImageView verifiedIV;
+    String uid;
 
     private Button linkBtn;
     EditText sheetIDTv;
@@ -43,36 +46,65 @@ public class SheetIDRegistration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sheet_idregistration);
 
-        firebaseAuth= FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        user=firebaseAuth.getCurrentUser();
+        user = firebaseAuth.getCurrentUser();
+        uid = firebaseAuth.getUid();
 
 
-        linkBtn=findViewById(R.id.linkBtn);
-        sheetIDTv=findViewById(R.id.sheetIDTv);
-        verifiedIV = findViewById(R.id.verifiedIV);
+        linkBtn = findViewById(R.id.linkBtn);
+        sheetIDTv = findViewById(R.id.sheetIDTv);
+        ///verifiedIV = findViewById(R.id.verifiedIV);
 
         linkBtn.setOnClickListener(v -> {
-            String sheetID = sheetIDTv.getText().toString().trim();
+            String sID = sheetIDTv.getText().toString().trim();
 
-            if (sheetID.length() != 44){
-                sheetIDTv.setError("ID must be more than 44 characters");
-                sheetIDTv.setFocusable(true);
+            if (sID.length() == 44) {
+                checkIfIDExits(sID);
             } else {
+                sheetIDTv.setError("ID must be 44 characters");
+                sheetIDTv.setFocusable(true);
 
-                ref=database.getReference("SheetIDs");
-                ref.child(user.getUid()).child("SheetID").setValue(sheetID).addOnCompleteListener(task -> {
-                    if (task.isSuccessful()){
-                        SharedPreferences preferences = getSharedPreferences("sheetID.pref", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putString("sheetID", sheetID);
-                        editor.apply();
-                        linkBtn.setVisibility(View.GONE);
-                        verifiedIV.setVisibility(View.VISIBLE);
-                        startActivity(new Intent(SheetIDRegistration.this,Dashboard.class));
-                    }
-                }).addOnFailureListener(e -> Toast.makeText(SheetIDRegistration.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show());
             }
         });
+    }
+
+    private void checkIfIDExits(String sID) {
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        database.child(sID)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            updateWittID(sID);
+                        }else {
+                            Toast.makeText(SheetIDRegistration.this, "The ID entered does not match any project try again", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    private void updateWittID(String sid) {
+                        HashMap<Object, String> hashMap = new HashMap<>();
+                        hashMap.put("SheetID", sid);
+                        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("SheetIDs");
+                        dbRef.child(user.getUid()).child("SheetID").setValue(hashMap)
+                                .addOnCompleteListener(task -> {
+                                    if (task.isComplete()){
+                                        SharedPreferences preferences = getSharedPreferences("sheetID.pref", Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = preferences.edit();
+                                        editor.putString("sheetID", sid);
+                                        editor.apply();
+                                        startActivity(new Intent(SheetIDRegistration.this, Dashboard.class));
+                                        finish();
+                                    }
+                                }).addOnFailureListener(e -> Toast.makeText(SheetIDRegistration.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show());
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
     }
 }

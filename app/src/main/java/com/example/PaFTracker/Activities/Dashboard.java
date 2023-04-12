@@ -22,6 +22,7 @@ public class Dashboard extends AppCompatActivity {
     private ActionBar actionBar;
 
     private FirebaseAuth firebaseAuth;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +31,8 @@ public class Dashboard extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        actionBar= getSupportActionBar();
-        actionBar.setTitle("PAFTRAKER");
+        //actionBar= getSupportActionBar();
+        //actionBar.setTitle("PARTAKER");
 
         viewPager = findViewById(R.id.viewpager);
         tabLayout = findViewById(R.id.tab);
@@ -45,22 +46,18 @@ public class Dashboard extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
-        checkUserStatus();
+    public void onBackPressed() {
+        moveTaskToBack(true);
+        finish();
     }
-
-    private void checkUserStatus () {
+    @Override
+    protected void onStart() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
-
         if (user != null && user.isEmailVerified()) {
 
-
-
         } else {
-            startActivity(new Intent(Dashboard.this, LoginActivity.class));
-            finish();
-        }
-
+            startActivity(new Intent(Dashboard.this, SetupDashboard.class));
+            finish();        }
+        super.onStart();
     }
 }

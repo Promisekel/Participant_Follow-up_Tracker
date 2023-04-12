@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="150dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:elevation="10dp"
     app:cardCornerRadius="10dp"
     app:cardBackgroundColor="@color/grey"
-    >
+    android:layout_marginBottom="10dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
@@ -48,6 +48,49 @@
             android:layout_height="0.6dp"
             android:background="@color/color_primary" />
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/next_visit"
+                android:fontFamily="serif"
+                android:textColor="@color/black"/>
+
+            <ImageButton
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_bell_24"
+                android:background="@null"
+                />
+
+            <TextView
+                android:id="@+id/nextVisit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day 7"
+                android:fontFamily="serif"
+                android:textColor="@color/black"/>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/circle_progress_item_layout">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

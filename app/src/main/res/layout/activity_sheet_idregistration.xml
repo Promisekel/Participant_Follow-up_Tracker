@@ -4,77 +4,105 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_primary"
-    tools:context=".Activities.SheetIDRegistration">
+    tools:context=".Activities.SheetIDRegistration"
+    android:background="@drawable/boarders">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card"
+
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="10dp"
-        app:cardCornerRadius="20dp"
-        android:background="@color/col1">
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginEnd="10dp">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textL2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:elevation="20dp"
-                android:padding="2dp"
-                android:textColorHint="@android:color/holo_green_light">
-
-                <EditText
-                    android:id="@+id/sheetIDTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="5dp"
-                    android:background="@color/white"
-                    android:drawablePadding="5dp"
-                    android:fontFamily="sans-serif-light"
-                    android:hint="Provide your Sheet ID"
-                    android:inputType="text"
-                    android:maxLength="44"
-                    android:textColor="@android:color/holo_green_dark"
-                    android:textColorHint="@color/white"
-                    android:textSize="14sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </RelativeLayout>
-
-
-
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/linkBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/Animation.Design.BottomSheetDialog"
-        android:layout_below="@id/card"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Connect"
+        android:layout_marginTop="220dp"
+        android:text="PLEASE PROVIDE YOUR SHEET ID"
+        android:textStyle="bold"
         android:textColor="@color/white"
-        android:padding="5dp"/>
+        android:fontFamily="sans-serif-black"/>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/boarders_02"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/displayIv"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_centerVertical="true"
+
+            android:layout_gravity="center_vertical"
+            android:background="@color/black"
+            android:src="@drawable/ic_add_link_24" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/displayIv"
+            android:layout_weight="1"
+            android:textColorHint="@android:color/holo_green_light"
+            app:boxCornerRadiusBottomEnd="100dp">
+
+            <EditText
+                android:id="@+id/sheetIDTv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="sans-serif-light"
+                android:hint="Project Name"
+                android:inputType="textEmailAddress"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/text1"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="20dp"
+            app:cardMaxElevation="10dp">
+
+            <Button
+                android:id="@+id/linkBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/boarders"
+                android:fontFamily="sans-serif-black"
+                android:text="CONNECT"
+                android:textColor="@color/white" />
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <ImageView
         android:id="@+id/verifiedIV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_verified"
-        android:layout_below="@id/card"
+        android:layout_below="@id/linear1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:visibility="gone">
+        android:layout_marginTop="10dp"
+        android:visibility="invisible"/>
 
-    </ImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/linear1"
+        android:layout_marginTop="80dp"
+        android:text="Learn how?"
+        android:textColor="@android:color/holo_blue_light"
+        android:fontFamily="sans-serif-condensed-light"/>
+
+
 </RelativeLayout>

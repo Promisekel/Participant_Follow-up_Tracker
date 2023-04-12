@@ -6,12 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.PaFTracker.Models.progressModel;
 import com.example.PaFTracker.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -41,6 +43,13 @@ public class progressAdapter extends RecyclerView.Adapter<progressAdapter.Holder
         String passport = model.getPASSPORT();
 
         holder.pid.setText(pid);
+
+        try {
+            Picasso.get().load(passport).placeholder(R.drawable.ic_part_passport).into(holder.profileIv);
+
+        }catch (Exception e){
+            Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
 
     }

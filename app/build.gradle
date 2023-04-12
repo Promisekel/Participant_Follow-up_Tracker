@@ -25,6 +25,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.example.PaFTracker'
 }
 
 dependencies {
@@ -49,5 +50,7 @@ dependencies {
     ////FIREBASE DEPENDENCIES
 
     implementation 'com.github.mohammadatif:CircularImageView:1.0.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 }
 apply plugin: 'com.google.gms.google-services'
